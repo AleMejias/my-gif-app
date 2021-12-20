@@ -2,7 +2,7 @@
   "name": "my-gif-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alemejias.github.io/my-gif-app/",
+  "homepage": "https://AleMejias.github.io/my-gif-app/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
