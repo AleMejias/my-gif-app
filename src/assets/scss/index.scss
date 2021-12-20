@@ -1,1 +1,230 @@
+@import "properties";
 
+body{
+    background-color:$black;
+}
+
+/*********************************** 
+        HEADER
+************************************/
+.header{
+    .header_titleContainer{
+        display: flex;
+        padding: 20px 5px;
+        img{
+            height: 3.5rem;
+            width: 3rem;
+        }
+        h4{
+            align-self: flex-end;
+            color: $white;
+            font-family: $font;
+            font-size: 3rem;
+            font-weight: bolder;
+        }
+    }
+    .header_searchBarContainer{
+        @keyframes flipping{
+            0%{
+                transform:rotate3d(1,1,0,0deg);
+            }
+            50%{
+                transform:rotate3d(1,1,0,180deg);
+            }
+            100%{
+                transform:rotate3d(1,1,0,0deg);
+            }
+        }
+        .header_searchBarContainer--form{
+            input[type='text']{
+                background-color: $white;
+                border-radius: 5px;
+                color: $black;
+                font-size: 1rem;
+                font-weight: 600;
+                outline: none;
+                padding: 15px;
+                width: 85%;
+            }
+            button{
+                background:$gradient;
+                border-radius: 3px;
+                padding: 15px;
+                text-align: center;
+                width: 4rem;
+            }
+            svg{
+                color: $white;
+                font-size: 1.2rem;
+            }
+            svg:hover{
+                animation: flipping 1s ease-in-out;
+            }
+        }
+    }
+}
+
+/*********************************** 
+        BODY
+************************************/
+.body{
+    .body_card{
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+        img{
+            border-radius: 2px;
+            cursor: pointer;
+            width: 100%;
+        }
+    }
+    .alineado{
+        align-self: center;
+    }
+}
+/*********************************** 
+        LOADING SPINNER
+************************************/
+.loading{
+    height: 100vh;
+    .loading__container{
+        height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .spinner-grow {
+            height: 3.5rem;
+            width: 3.5rem;
+        }
+    }
+}
+
+/*********************************** 
+        PAGINATION
+************************************/
+.paginationContainer{
+    button,li{
+        background: $white;
+        border-radius: 2px;
+        color: $black;
+        cursor: pointer;
+        font-family: $font;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin: 0 2px;
+    }
+}
+/*********************************** 
+        GIF DETAIL
+************************************/
+.detail{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+
+    .detail_container{
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+    .detail_btnBack{
+        display: flex;
+        justify-content: center;
+        button{
+            background:$gradient;
+            border-radius: 3px;
+            color: $white;
+            font-family: $font;
+            padding: 15px;
+            text-align: center;
+        }
+    }
+}
+/*********************************** 
+        NO DATA FOUND
+************************************/
+.noDataContainer{
+    height: 50vh;
+    .noDataContainer__message{
+        display: flex;
+        justify-content: center;
+        padding: 25px;
+        
+        h4{
+            align-self: flex-end;
+            color: $white;
+            font-family:$font;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+    }
+}
+.paginationActivated{
+    border: 2px solid #0a58ca;
+}
+.paginationDeactivated{
+    border: none;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+
+
+/*********************************** 
+        RESPONSIVE DESIGN
+************************************/
+
+@media only screen and (max-width: 500px){
+/*********************************** 
+    HEADER
+************************************/
+    .header{
+        .header_titleContainer{
+            img{
+                height: 2.5rem;
+                width: 2rem;
+            }
+            h4{
+                font-size: 2rem;
+            }
+        }
+        .header_searchBarContainer{
+            .header_searchBarContainer--form{
+                input[type='text']{
+                    padding: 10px;
+                    font-size: .9rem;
+                    width: 75%;
+                }
+                button{
+                    padding: 10px;
+                    font-size: .9rem;
+                    width: 20%;
+                }
+                svg{
+                    font-size: 100%;
+                }
+            }
+        }
+    }
+
+/*********************************** 
+    GIF DETAIL
+************************************/
+    .detail{
+        .detail_container{
+            // padding: 20px;
+            img{
+                width: 100%;
+            }
+        }
+        .detail_btnBack{
+            button{
+                padding: 8px;
+            }
+        }
+    }
+}

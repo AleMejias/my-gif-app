@@ -1,15 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const GifContainer = () => {
-    const getGifs = async () => {
-        const url = 'https://api.giphy.com/v1/gifs/search?q=Batman&limit=10&api_key=2I3HqLpalnG5ItcS5DWv2eH7fBn8yryI';
-        const request = await fetch(url);
-        const { data }= await request.json();
-        console.log(data);
-    }
-    getGifs();
+import Pagination from './Pagination';
+import GifItem from './GifItem';
+import NoDataContainer from './NoDataContainer';
+
+const GifContainer = ( { images } ) => {
+    const itemsPerPage = 12;
+    const [ paginationItems , setPaginationItems ] = useState([]);
+    const [ currentPage , setCurrentPage ] = useState(0);
+
+    useEffect(() => {
+        setPaginationItems([ ...images ].slice(0,itemsPerPage));
+        setCurrentPage(1);
+    },[images])
     return (
-        <h2>test</h2>
+        images.length !== 0 
+        ?
+            <section className = "container body mt-5">
+                <div className = "row">
+                    {
+                            paginationItems.map((img , index) =>(<GifItem
+                                                            key = { img.id }
+                                                            index = { index }
+                                                            id = { img.id }
+                                                            smallSize = {img.smallSize}
+                                                            title = {img.title} 
+                                                        /> ) 
+                        )
+                    }
+                </div>
+                {
+                    images.length > 11 
+                    ?
+                        <Pagination 
+                            currentPage = { currentPage } 
+                            images = { images } 
+                            setPaginationItems = { setPaginationItems }
+                            setCurrentPage = { setCurrentPage }
+                        />
+                    : ""
+                }
+            </section>
+        :
+            <NoDataContainer />
     );
 }
 
