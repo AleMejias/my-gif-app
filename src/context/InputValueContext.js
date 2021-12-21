@@ -10,6 +10,7 @@ const InputProvider = ( {children} ) => {
     const handleFormSubmit = ( e ) => {
         e.preventDefault();
         setCategories( inputValue );
+        setCurrentPage(1);
         setInputValue('');
     } 
     const handleInputValue = ( e ) => {
