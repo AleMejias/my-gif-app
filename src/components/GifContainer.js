@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import Pagination from './Pagination';
 import GifItem from './GifItem';
 import NoDataContainer from './NoDataContainer';
 
+import InputValueContext from '../context/InputValueContext';
+
 const GifContainer = ( { images } ) => {
     const itemsPerPage = 12;
     const [ paginationItems , setPaginationItems ] = useState([]);
-    const [ currentPage , setCurrentPage ] = useState(0);
-
-    useEffect(() => {
-        setPaginationItems([ ...images ].slice(0,itemsPerPage));
-        setCurrentPage(1);
-    },[images])
+    const { currentPage } = useContext( InputValueContext );
+    const lastIndex = currentPage * itemsPerPage;
+    useEffect(() => { 
+        setPaginationItems([ ...images ].slice(lastIndex - itemsPerPage,lastIndex));
+    },[images,lastIndex])
     return (
         images.length !== 0 
         ?
@@ -36,7 +37,7 @@ const GifContainer = ( { images } ) => {
                             currentPage = { currentPage } 
                             images = { images } 
                             setPaginationItems = { setPaginationItems }
-                            setCurrentPage = { setCurrentPage }
+                            // setCurrentPage = { setCurrentPage }
                         />
                     : ""
                 }

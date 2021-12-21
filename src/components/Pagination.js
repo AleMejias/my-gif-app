@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { handleBtnPrevious , handleBtnNext, handleBtnsCurrentPage } from '../helpers/currentPage';
 
-const Pagination = ( { currentPage, images , setPaginationItems, setCurrentPage } ) => {
+import InputValueContext from "../context/InputValueContext";
 
+
+const Pagination = ( { images , setPaginationItems } ) => {
+
+    const { currentPage , setCurrentPage } = useContext(InputValueContext);
 
     return (
         <section className="container paginationContainer mt-4">
