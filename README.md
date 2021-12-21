@@ -14,4 +14,4 @@
 
 
 #### Puedes visitarla haciendo click en el enlace de abajo
-https://alemejias.github.io/my-gif-app/
+https://naughty-blackwell-127b4e.netlify.app/
